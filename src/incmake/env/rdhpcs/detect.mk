@@ -15,6 +15,14 @@ else
     ifneq (,$(shell hostname | grep -i gaea))
       NEMS_COMPILER?=intel
       $(call add_build_env,gaea.$(NEMS_COMPILER),env/rdhpcs/gaea.$(NEMS_COMPILER).mk)
+    else
+      # DH* 
+      #ifneq (,$(and $(wildcard /scratch1),$(wildcard /scratch2)))
+      ifneq (,$(wildcard /tds_scratch1))
+      # *DH juno test system
+        NEMS_COMPILER?=intel
+        $(call add_build_env,hera.$(NEMS_COMPILER),env/rdhpcs/hera.$(NEMS_COMPILER).mk)
+      endif
     endif
   endif
 endif
