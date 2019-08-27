@@ -8,8 +8,7 @@ if ( { test -d /lfs3 } ) then
             source /apps/lmod/lmod/init/$__ms_shell
     endif
     module purge
-#else if ( { test -d /scratch1 } ) then
-else if ( { test -d /tds_scratch1 } ) then
+else if ( { test -d /scratch1 } ) then
     # We are on NOAA Hera
     if ( ! { module help >& /dev/null } ) then
         source /apps/lmod/lmod/init/$__ms_shell
