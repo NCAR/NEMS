@@ -4,11 +4,11 @@
 #
 ########################################################################
 
-ifneq (,$(and $(wildcard /scratch1),$(wildcard /scratch2),$(shell hostname | grep -i hfe)))
+ifneq (,$(and $(wildcard /scratch1),$(and $(wildcard /scratch2),$(wildcard /xcatpost))))
   NEMS_COMPILER?=intel
   $(call add_build_env,hera.$(NEMS_COMPILER),env/rdhpcs/hera.$(NEMS_COMPILER).mk)
 else
-  ifneq (,$(and $(wildcard /scratch4),$(wildcard /scratch3),$(shell hostname | grep -i tfe)))
+  ifneq (,$(and $(wildcard /scratch4),$(and $(wildcard /scratch3),$(wildcard /tftpboot))))
     NEMS_COMPILER?=intel
     $(call add_build_env,theia.$(NEMS_COMPILER),env/rdhpcs/theia.$(NEMS_COMPILER).mk)
   else
