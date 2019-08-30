@@ -4,13 +4,13 @@
 #
 ########################################################################
 
-ifneq (,$(and $(wildcard /scratch1),$(and $(wildcard /scratch2),$(wildcard /xcatpost))))
+ifneq (,$(and $(wildcard /scratch),$(wildcard /scratch3)))
   NEMS_COMPILER?=intel
-  $(call add_build_env,hera.$(NEMS_COMPILER),env/rdhpcs/hera.$(NEMS_COMPILER).mk)
+  $(call add_build_env,theia.$(NEMS_COMPILER),env/rdhpcs/theia.$(NEMS_COMPILER).mk)
 else
-  ifneq (,$(and $(wildcard /scratch4),$(and $(wildcard /scratch3),$(wildcard /tftpboot))))
+  ifneq (,$(and $(wildcard /scratch1),$(wildcard /scratch2)))
     NEMS_COMPILER?=intel
-    $(call add_build_env,theia.$(NEMS_COMPILER),env/rdhpcs/theia.$(NEMS_COMPILER).mk)
+    $(call add_build_env,hera.$(NEMS_COMPILER),env/rdhpcs/hera.$(NEMS_COMPILER).mk)
   else
     ifneq (,$(and $(wildcard /lfs1),$(wildcard /lfs3)))
       NEMS_COMPILER?=intel
